@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Password Generator</title>
+		<link rel="stylesheet" href="dist/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+		      rel="stylesheet">
+	</head>
+	<body>
+		<div id="container">
+			<span id="heading">Password X</span>
+			<button id="toggle-theme-button">
+				<i class="fa-solid fa-moon icon" id="dark-mode-icon"></i>
+				<i class="fa-solid fa-sun icon" id="light-mode-icon"></i>
+			</button>
+			<div id="password-block">
+				<div id="generated-password"></div>
+				<i class="fa-solid fa-circle-info password-info-icon" title="Click on the password to copy!"></i>
+			</div>
+			<button id="generate-password-button" class="button">
+				Generate
+			</button>
+			<span id="notification">Copied!</span>
+		</div>
+		<script src="https://kit.fontawesome.com/1f1d09a3f8.js" crossorigin="anonymous"></script>
+		<script src="dist/app.js"></script>
+	</body>
+</html>

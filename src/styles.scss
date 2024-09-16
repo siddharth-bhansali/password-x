@@ -1,0 +1,155 @@
+@use "sass:map";
+
+:root {
+	--background-color: #FFFFFF;
+	--text-color: #000000;
+	--hover-color: #666666;
+	--light-mode-display: block;
+	--dark-mode-display: none;
+}
+
+[data-theme="dark"] {
+	--background-color: #000000;
+	--text-color: #FFFFFF;
+	--hover-color: #999999;
+	--light-mode-display: none;
+	--dark-mode-display: block;
+}
+
+$base-font-styles: (
+		font-family: "Inria Sans, sans-serif", font-weight: 400, font-style: normal
+);
+
+$layout-breakpoint-small: 960px;
+
+@mixin apply-font-styles {
+	@each $property, $value in $base-font-styles {
+		#{$property}: #{$value};
+	}
+}
+
+@mixin apply-theme {
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	@include apply-font-styles;
+	@include apply-theme;
+	
+	height: 100vh;
+	width: 100vw;
+	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+#container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 4rem;
+}
+
+button {
+	@include apply-font-styles;
+	@include apply-theme;
+	border-radius: 0.5rem;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.25s ease-in-out;
+	
+	&#generate-password-button {
+		background-color: var(--text-color);
+		color: var(--background-color);
+		padding: 2rem 5rem;
+		font-size: 2rem;
+		
+		&:hover {
+			background-color: var(--hover-color);
+			color: var(--background-color);
+		}
+		
+		@media (max-width: $layout-breakpoint-small) {
+			padding: 1rem 2.5rem;
+		}
+	}
+	
+	&#toggle-theme-button {
+		position: fixed;
+		top: 2rem;
+		right: 2rem;
+		padding: 0.5rem;
+		background-color: var(--text-color);
+		color: var(--background-color);
+		width: 3rem;
+		height: 3rem;
+		text-align: center;
+		
+		.icon {
+			font-size: 1rem;
+			
+			&#light-mode-icon {
+				display: var(--light-mode-display);
+			}
+			
+			&#dark-mode-icon {
+				display: var(--dark-mode-display);
+			}
+		}
+	}
+}
+
+#password-block {
+	position: relative;
+	visibility: hidden;
+	
+	#generated-password {
+		height: 7rem;
+		cursor: pointer;
+		font-size: 5rem;
+		
+		@media (max-width: $layout-breakpoint-small) {
+			font-size: 3rem;
+		}
+	}
+	
+	.password-info-icon {
+		position: absolute;
+		top: -2rem;
+		right: -3rem;
+	}
+}
+
+#heading {
+	@include apply-theme;
+	position: fixed;
+	top: 2.5rem;
+	left: 2rem;
+	font-size: 2rem;
+	background-color: transparent;
+}
+
+#notification {
+	@include apply-theme;
+	opacity: 0;
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	font-size: 2rem;
+	border: var(--text-color) solid 1px;
+	padding: 1rem 1.5rem;
+	border-radius: 0.5rem;
+	transition: opacity 0.25s ease-in-out;
+	
+	@media (max-width: $layout-breakpoint-small) {
+		font-size: 1rem;
+		padding: 0.75rem 1rem;
+	}
+}

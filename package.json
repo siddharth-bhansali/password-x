@@ -1,0 +1,19 @@
+{
+    "name": "password-x",
+    "version": "1.0.0",
+    "description": "A Simple Password Generator",
+    "main": "dist/app.js",
+    "scripts": {
+        "build": "tsc && sass src/styles.scss dist/styles.css",
+        "watch:ts": "tsc --watch",
+        "watch:sass": "sass --watch src/styles.scss:dist/styles.css",
+        "watch": "concurrently \"npm run watch:ts\" \"npm run watch:sass\""
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "typescript": "^5.5.3",
+        "sass": "^1.78.0",
+        "concurrently": "^9.0.1"
+    },
+    "private": true
+}
